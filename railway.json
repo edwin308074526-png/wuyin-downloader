@@ -1,0 +1,16 @@
+{
+  "$schema": "https://railway.app/railway.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacks": {
+      "image": "nodejs-20"
+    }
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "restartPolicyType": "OnFailure",
+    "restartPolicyMaxRetries": 10,
+    "runtime": "Node",
+    "startCommand": "cd backend && npm install && npm start"
+  }
+}
