@@ -1,0 +1,172 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 50rpx;
+}
+
+.preview-section {
+  background: #000;
+  width: 100%;
+}
+
+.video-preview {
+  width: 100%;
+  height: 450rpx;
+}
+
+.info-section {
+  background: #ffffff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.video-title {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 15rpx;
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.platform-tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 25rpx;
+}
+
+.duration {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.action-section {
+  background: #ffffff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.action-btn {
+  width: 100%;
+  background: #ffffff;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: #ffffff;
+}
+
+.action-btn.primary.loading {
+  background: linear-gradient(135deg, #999 0%, #777 100%);
+}
+
+.action-btn.secondary {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 25rpx 15rpx;
+}
+
+.action-btn::after {
+  border: none;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-icon {
+  font-size: 50rpx;
+  margin-right: 20rpx;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-btn.primary .btn-text {
+  align-items: flex-start;
+}
+
+.btn-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.btn-subtitle {
+  font-size: 24rpx;
+  margin-top: 5rpx;
+  opacity: 0.8;
+}
+
+.action-btn.secondary .btn-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.action-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10rpx;
+  background: rgba(255,255,255,0.3);
+  border-radius: 5rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+
+.progress-inner {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 5rpx;
+  transition: width 0.3s ease;
+}
+
+.back-btn {
+  background: #ffffff;
+  color: #667eea;
+  font-size: 28rpx;
+  padding: 25rpx;
+  margin: 0 30rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #667eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn::after {
+  border: none;
+}
+
+.tips {
+  text-align: center;
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+}
+
+.tips text {
+  font-size: 24rpx;
+  color: #999;
+}

@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 视频预览 -->
+  <view class="preview-section">
+    <video 
+      class="video-preview" 
+      src="{{videoData.videoUrl}}" 
+      poster="{{videoData.cover}}"
+      controls
+      show-center-play-btn
+      enable-danmu
+    />
+  </view>
+
+  <!-- 视频信息 -->
+  <view class="info-section" wx:if="{{videoData.title}}">
+    <text class="video-title">{{videoData.title}}</text>
+    <view class="video-meta">
+      <text class="platform-tag">{{videoData.platform === 'douyin' ? '🎵 抖音' : videoData.platform === 'kuaishou' ? '📺 快手' : videoData.platform === 'xiaohongshu' ? '📕 小红书' : '📷 Instagram'}}</text>
+      <text class="duration" wx:if="{{videoData.duration}}">{{videoData.duration}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-section">
+    <!-- 下载视频 -->
+    <button 
+      class="action-btn primary {{isDownloading ? 'loading' : ''}}" 
+      bindtap="saveVideo"
+      disabled="{{isDownloading}}"
+    >
+      <view class="btn-content">
+        <text class="btn-icon">⬇️</text>
+        <view class="btn-text">
+          <text class="btn-title">{{isDownloading ? '下载中...' : '保存视频'}}</text>
+          <text class="btn-subtitle" wx:if="{{isDownloading}}">{{downloadProgress}}%</text>
+        </view>
+      </view>
+      <view class="progress-bar" wx:if="{{isDownloading}}">
+        <view class="progress-inner" style="width: {{downloadProgress}}%"></view>
+      </view>
+    </button>
+
+    <view class="action-row">
+      <!-- 保存封面 -->
+      <button class="action-btn secondary" bindtap="saveCover">
+        <text class="btn-icon">🖼️</text>
+        <text class="btn-text">保存封面</text>
+      </button>
+
+      <!-- 复制链接 -->
+      <button class="action-btn secondary" bindtap="copyLink">
+        <text class="btn-icon">🔗</text>
+        <text class="btn-text">复制链接</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <button class="back-btn" bindtap="navigateBack">
+    <text>← 返回首页</text>
+  </button>
+
+  <!-- 提示 -->
+  <view class="tips">
+    <text>💡 视频已去除水印，可直接保存到相册</text>
+  </view>
+</view>

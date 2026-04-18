@@ -1,0 +1,85 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">视频去水印下载</text>
+    <text class="subtitle">支持抖音·快手·小红书·Instagram</text>
+  </view>
+
+  <!-- 平台图标 -->
+  <view class="platform-icons">
+    <view wx:for="{{platforms}}" wx:key="id" class="platform-item">
+      <view class="platform-icon" style="background-color: {{item.color}}">
+        <text class="platform-emoji">{{item.id === 'douyin' ? '🎵' : item.id === 'kuaishou' ? '📺' : item.id === 'xiaohongshu' ? '📕' : '📷'}}</text>
+      </view>
+      <text class="platform-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <view class="input-wrapper">
+      <input 
+        class="url-input" 
+        type="text" 
+        placeholder="粘贴视频链接到此处" 
+        value="{{videoUrl}}"
+        bindinput="onUrlInput"
+      />
+      <view class="paste-btn" bindtap="pasteFromClipboard">
+        <text>📋 粘贴</text>
+      </view>
+    </view>
+    
+    <!-- 错误提示 -->
+    <view class="error-tip" wx:if="{{error}}">
+      <text>{{error}}</text>
+    </view>
+
+    <!-- 解析按钮 -->
+    <button 
+      class="parse-btn {{isLoading ? 'loading' : ''}}" 
+      bindtap="parseVideo"
+      disabled="{{isLoading}}"
+    >
+      <text wx:if="{{!isLoading}}">🔍 解析视频</text>
+      <text wx:else>⏳ 解析中...</text>
+    </button>
+  </view>
+
+  <!-- 使用说明 -->
+  <view class="tips-section">
+    <view class="tips-title">📖 使用说明</view>
+    <view class="tips-list">
+      <view class="tip-item">1. 复制视频链接</view>
+      <view class="tip-item">2. 粘贴到上方输入框</view>
+      <view class="tip-item">3. 点击解析按钮</view>
+      <view class="tip-item">4. 一键保存到相册</view>
+    </view>
+    <view class="tips-warning">⚠️ 仅供个人学习使用，请尊重原创版权</view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section" wx:if="{{historyList.length > 0}}">
+    <view class="history-header">
+      <text class="history-title">📜 最近解析</text>
+      <text class="clear-btn" bindtap="clearHistory">清空</text>
+    </view>
+    <scroll-view scroll-x class="history-scroll">
+      <view class="history-list">
+        <view 
+          wx:for="{{historyList}}" 
+          wx:key="id" 
+          class="history-item"
+          bindtap="openFromHistory"
+          data-url="{{item.url}}"
+          data-platform="{{item.platform}}"
+        >
+          <image class="history-cover" src="{{item.cover}}" mode="aspectFill" />
+          <view class="history-platform">
+            <text>{{item.platform === 'douyin' ? '抖音' : item.platform === 'kuaishou' ? '快手' : item.platform === 'xiaohongshu' ? '小红书' : 'INS'}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
